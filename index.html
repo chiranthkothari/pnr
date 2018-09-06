@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <title>PNR and Train Running status</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Questrial', sans-serif;
+            font-weight: lighter;
+            text-align: center;
+        }
+
+        .main-container {
+            width: 100%;
+            height: 100%;
+            padding-top: 60px;
+            text-align: center;
+        }
+
+        .headd {
+            padding-bottom: 30px;
+            font-size: 22px;
+        }
+
+        .instruct {
+            padding-bottom: 8px;
+        }
+
+        .cont {
+            text-align: center;
+
+        }
+
+        .inpt {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="main">
+        <div class="container">
+            <div class="main-container">
+                <div class="vert">
+                    <h3 class="headd">Get PNR status and Train Running status on WhatsApp</h3>
+                    <div class="cont">
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="icon_prefix" type="text" class="validate">
+                                        <label for="icon_prefix">PNR Number or Train Number</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <button type="submit" onclick="generator()" class="waves-effect waves-light btn">Get Status</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 50px;">Developed by <a href="http://bit.ly/chiranth" target="_blank">Chiranth Kothari</a></p>
+    </section>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script>
+        function generator() {
+            var message = document.getElementById('icon_prefix').value.split(" ").join("%20");
+            var link;
+            if(message.length<9){
+                link = "https://api.whatsapp.com/send?phone=917349389104" + "&text=" + message;
+            }
+            else{
+                link = "https://api.whatsapp.com/send?phone=917349389104" + "&text=" + "PNR " + message;
+            }
+            alert("WhatsApp will open now. Press Send button");
+            window.location.href= link;
+        }
+    </script>
+</body>
+</html>
